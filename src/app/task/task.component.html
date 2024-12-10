@@ -1,0 +1,14 @@
+<div class="">
+<h1>{{task().tital}}</h1>
+<p>{{task().date}}</p>
+<p>{{task().content}}</p>
+<p>{{task().remark}}</p>
+@if(task().complite){
+    <button > This Task is Completed</button>
+} @else {
+    <button (click)="completed()">Completed</button>
+    <button (click)="remark()">Add Remark</button>
+    
+}
+
+</div>

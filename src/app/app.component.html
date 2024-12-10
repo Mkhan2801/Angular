@@ -1,29 +1,32 @@
 <app-header />
 <main>
   <ul id="users">
-
+@for (user of users; track user.id) {
+<!-- For Lagacy Angular -->
+  <!-- <li **ngFor="let user of users"> -->
     <li>
-      <app-user (select)="onSelect($event)" [id]="user[0].id" [avatar]="user[0].avatar" [name]="user[0].name" />
+      <app-user (select)="onSelect($event)" [user]="user"/>
     </li>
-    <li>
-      <app-user (select)="onSelect($event)" [id]="user[1].id" [avatar]="user[1].avatar" [name]="user[1].name" />
-    </li>
-    <li>
-      <app-user (select)="onSelect($event)" [id]="user[2].id" [avatar]="user[2].avatar" [name]="user[2].name" />
-    </li>
-    <li>
-      <app-user (select)="onSelect($event)" [id]="user[3].id" [avatar]="user[3].avatar" [name]="user[3].name" />
-    </li>
-    <li>
-      <app-user (select)="onSelect($event)" [id]="user[4].id" [avatar]="user[4].avatar" [name]="user[4].name" />
-    </li>
-    <li>
-      <app-user (select)="onSelect($event)" [id]="user[5].id"  [avatar]="user[5].avatar" [name]="user[5].name" />
-    </li>
+  <!-- </li> -->
+  }
   </ul>
-  
-  <app-details [name]="selectUser.name" [phone]="selectUser.phoneNo" [avatar]="selectUser.avatar" [age]="selectUser.age" [DOB]="selectUser.d_o_b"  />
+  @if (selectUser) {
+  <!-- <app-details **ngIf="selectUser";else fallback /> -->
+  <app-details [user]="selectUser"  (taskAdd)="newTask($event)"/>
+  <!-- <ng-teplate #fallback><p id="fallback">No Data</p></ng-teplate> -->
+  } @else {
+    <p id="fallback">No Data</p>
+  }
+@if(userTaskId){
+  <app-addtask [userId]="userTaskId" />
+}
 </main>
-
-
+@for (task of tasks; track task.id) {
+  @if (task.uid==selectUser.id) {
+<app-task [task]="task" (complet)="done($event)" (addremark)="remarkAdded($event)"/>
+@if (taskId) {
+  <app-addremark [task]="selectTask" (getId)="updateRemark($event)"/>
+}
+  }
+}
 <router-outlet />

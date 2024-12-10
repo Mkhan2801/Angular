@@ -1,4 +1,5 @@
-import { Component,input,computed } from '@angular/core';
+import { Component,input,computed,output } from '@angular/core';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'app-details',
@@ -9,12 +10,12 @@ import { Component,input,computed } from '@angular/core';
 export class DetailsComponent {
 
  
-  name = input.required<string>();
-  phone = input.required<string>();
-  age = input.required<number>();
-  avatar = input.required<string>();
-  DOB = input.required<string>();
+  user = input.required<User>();
+  taskAdd = output<string>();
 
-  imagestr = computed(()=>  "assets/users/" +this.avatar())
+  imagestr = computed(()=>  "assets/users/" +this.user().avatar)
 
+  addTask(){
+    this.taskAdd.emit(this.user().id);
+  }
 }

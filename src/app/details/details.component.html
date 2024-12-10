@@ -1,17 +1,18 @@
 <div class="">
 <h1>
-    Name: {{name()}}
+    Name: {{user().name}}
 
 </h1>
-<img class="userimg" src="{{imagestr()}}" alt="{{name()}}">
+<img class="userimg" src="{{imagestr()}}" alt="{{user().name}}">
 
 <h2>
-    Phone No.: {{phone()}}
+    Phone No.: {{user().phoneNo}}
     <br>
-    Age : {{age()}}
+    Age : {{user().age}}
     <br>
-    D.O.B.: {{DOB()}}
+    D.O.B.: {{user().d_o_b}}
 
+    <button (click)="addTask()">Add Task</button>
 </h2>
 
 </div>
