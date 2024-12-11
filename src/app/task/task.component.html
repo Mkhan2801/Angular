@@ -1,14 +1,23 @@
 <div class="">
-<h1>{{task().tital}}</h1>
-<p>{{task().date}}</p>
+<h1>Tital :{{task().tital}}</h1>
+
+<p>Date: {{task().date}}</p>
+
 <p>{{task().content}}</p>
-<p>{{task().remark}}</p>
+
+<p>Remark: {{task().remark}}</p>
+
 @if(task().complite){
-    <button > This Task is Completed</button>
+     This Task is Completed
 } @else {
     <button (click)="completed()">Completed</button>
-    <button (click)="remark()">Add Remark</button>
-    
+<br>
+    <button (click)="remark()">Update Remark</button>   
 }
-
+<br>
+@if (addremark) {
+    <app-addremark [task]="task()" (removeRemarkDiv)="oncencelRemark()" (newRemark)="onUpdateRemark($event)" />
+}
 </div>
+<hr>
+<br>

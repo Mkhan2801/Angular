@@ -1,20 +1,21 @@
 
 export const userData = [
+  
   {
     id: 'u1',
     name: 'user1',
-    phoneNo: '123454601',
-    avatar: 'user-1.jpg',
-    age: 20,
-    d_o_b: '12-dec-20'
-  },
-  {
-    id: 'u2',
-    name: 'user2',
     phoneNo: '123454602',
     avatar: 'user-2.jpg',
     age: 21,
     d_o_b: '13-dec-20'
+  },
+  {
+    id: 'u2',
+    name: 'user2',
+    phoneNo: '123454601',
+    avatar: 'user-1.jpg',
+    age: 20,
+    d_o_b: '12-dec-20'
   },
   {
     id: 'u3',

@@ -1,9 +1,10 @@
 import { Component,input,computed,output } from '@angular/core';
 import { User } from '../user/user.model';
+import { AddtaskComponent } from '../task/addtask/addtask.component';
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [AddtaskComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
@@ -11,11 +12,25 @@ export class DetailsComponent {
 
  
   user = input.required<User>();
-  taskAdd = output<string>();
-
+  newTaskAdd = false;
+  allTasks =true;
+  showAllTasks = output<boolean>();
+  
   imagestr = computed(()=>  "assets/users/" +this.user().avatar)
 
   addTask(){
-    this.taskAdd.emit(this.user().id);
+    this.newTaskAdd =true;
+  }
+
+  onRemoveTask(){
+    this.newTaskAdd=false;
+  }
+
+  
+
+  allTask(){
+    this.allTasks = !this.allTasks;
+    this.showAllTasks.emit(this.allTasks)
+
   }
 }

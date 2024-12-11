@@ -13,8 +13,15 @@
     D.O.B.: {{user().d_o_b}}
 
     <button (click)="addTask()">Add Task</button>
+    @if (allTasks) {
+    <button (click)="allTask()">Show Painding Tasks</button>
+    }@else {
+    <button (click)="allTask()">Show All Tasks</button>
+    }
 </h2>
-
+@if(newTaskAdd){
+    <app-addtask [userId]="user().id" (removeTaskDiv)="onRemoveTask()"/>
+  }
 </div>
 
 

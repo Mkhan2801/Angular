@@ -12,21 +12,23 @@
   </ul>
   @if (selectUser) {
   <!-- <app-details **ngIf="selectUser";else fallback /> -->
-  <app-details [user]="selectUser"  (taskAdd)="newTask($event)"/>
+  <app-details [user]="selectUser" (showAllTasks)="onShowAllTasks($event)" />
   <!-- <ng-teplate #fallback><p id="fallback">No Data</p></ng-teplate> -->
   } @else {
     <p id="fallback">No Data</p>
   }
-@if(userTaskId){
-  <app-addtask [userId]="userTaskId" />
-}
+
 </main>
 @for (task of tasks; track task.id) {
-  @if (task.uid==selectUser.id) {
-<app-task [task]="task" (complet)="done($event)" (addremark)="remarkAdded($event)"/>
-@if (taskId) {
-  <app-addremark [task]="selectTask" (getId)="updateRemark($event)"/>
-}
+  @if (task.uid==selectUser.id ) {
+    @if(paindingTasks){
+      <app-task [task]="task" (complet)="onTaskComplet($event)"/>
+    } @else if(!task.complite) {
+    
+        <app-task [task]="task" (complet)="onTaskComplet($event)"/>
+      
+    }
+
   }
 }
 <router-outlet />
