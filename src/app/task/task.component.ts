@@ -1,11 +1,12 @@
 import { Component, output,input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import {Task} from './task.model';
 import { AddremarkComponent } from './addremark/addremark.component';
 import { taskData } from '../data/TaskData';
 @Component({
   selector: 'app-task',
   standalone:true,
-  imports: [AddremarkComponent],
+  imports: [AddremarkComponent,DatePipe],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
@@ -27,7 +28,7 @@ this.addremark =false
 }
 
 onUpdateRemark(selectedTask:Task){
-this.toUpdateTask = taskData.findIndex((task)=>task.id===selectedTask.id)!
+this.toUpdateTask = taskData.findIndex((task)=>task.id===selectedTask.id) 
 taskData[this.toUpdateTask].remark = selectedTask.remark
 this.addremark =false
 }

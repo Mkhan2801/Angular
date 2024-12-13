@@ -1,23 +1,26 @@
-<div class="">
-<h1>Tital :{{task().tital}}</h1>
+<div class="center">
 
-<p>Date: {{task().date}}</p>
+    <article>
+        <h2>Tital :{{task().tital}}</h2>
+        <time>Date: {{task().date | date:'mediumDate'}}</time>
+        <p>{{task().content}}</p>
+        <p>Remark: {{task().remark}}</p>
 
-<p>{{task().content}}</p>
+        <p class="actions">
+            @if(task().complite){
+                This Task is Completed
+           } @else {
+               <button (click)="completed()">Completed</button>
+           
+               <button (click)="remark()">Update Remark</button>   
+           }
+           <br>
+           @if (addremark) {
+               <app-addremark [task]="task()" (removeRemarkDiv)="oncencelRemark()" (newRemark)="onUpdateRemark($event)" />
+           }
+        </p>
+      </article>
 
-<p>Remark: {{task().remark}}</p>
-
-@if(task().complite){
-     This Task is Completed
-} @else {
-    <button (click)="completed()">Completed</button>
-<br>
-    <button (click)="remark()">Update Remark</button>   
-}
-<br>
-@if (addremark) {
-    <app-addremark [task]="task()" (removeRemarkDiv)="oncencelRemark()" (newRemark)="onUpdateRemark($event)" />
-}
 </div>
 <hr>
 <br>

@@ -1,10 +1,11 @@
 import { Component,input,computed,output } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { User } from '../user/user.model';
 import { AddtaskComponent } from '../task/addtask/addtask.component';
 
 @Component({
   selector: 'app-details',
-  imports: [AddtaskComponent],
+  imports: [AddtaskComponent,DatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })

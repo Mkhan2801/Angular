@@ -1,27 +1,29 @@
-<div class="">
-<h1>
-    Name: {{user().name}}
-
-</h1>
-<img class="userimg" src="{{imagestr()}}" alt="{{user().name}}">
-
-<h2>
-    Phone No.: {{user().phoneNo}}
-    <br>
-    Age : {{user().age}}
-    <br>
-    D.O.B.: {{user().d_o_b}}
-
-    <button (click)="addTask()">Add Task</button>
-    @if (allTasks) {
-    <button (click)="allTask()">Show Painding Tasks</button>
-    }@else {
-    <button (click)="allTask()">Show All Tasks</button>
-    }
-</h2>
-@if(newTaskAdd){
-    <app-addtask [userId]="user().id" (removeTaskDiv)="onRemoveTask()"/>
-  }
-</div>
-
-
+  
+  <section id="tasks">
+    <img class="userimg" src="{{imagestr()}}" alt="{{user().name}}">
+    <h1>
+        Name: {{user().name}}
+    
+    </h1>
+    <h2>
+    
+        Phone No.: {{user().phoneNo}}
+        <br>
+        Age : {{user().age}}
+        <br>
+        D.O.B.: {{user().d_o_b  | date:'mediumDate'}}
+    <menu>
+        <button (click)="addTask()">Add Task</button>
+        @if (allTasks) {
+        <button (click)="allTask()">Show Painding Tasks</button>
+        }@else {
+        <button (click)="allTask()">Show All Tasks</button>
+        }
+    </menu>
+    </h2>
+    @if(newTaskAdd){
+        <app-addtask [userId]="user().id" (removeTaskDiv)="onRemoveTask()"/>
+      }
+      </section>
+  
+  

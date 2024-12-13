@@ -3,7 +3,7 @@ export const userData = [
   
   {
     id: 'u1',
-    name: 'user1',
+    name: 'Jasmine Washington',
     phoneNo: '123454602',
     avatar: 'user-2.jpg',
     age: 21,
@@ -11,7 +11,7 @@ export const userData = [
   },
   {
     id: 'u2',
-    name: 'user2',
+    name: 'Emily Thompson',
     phoneNo: '123454601',
     avatar: 'user-1.jpg',
     age: 20,
@@ -19,7 +19,7 @@ export const userData = [
   },
   {
     id: 'u3',
-    name: 'user3',
+    name: 'Marcus Johnson',
     phoneNo: '123454603',
     avatar: 'user-3.jpg',
     age: 22,
@@ -27,7 +27,7 @@ export const userData = [
   },
   {
     id: 'u4',
-    name: 'user4',
+    name: 'David Miller',
     phoneNo: '123454604',
     avatar: 'user-4.jpg',
     age: 23,
@@ -35,7 +35,7 @@ export const userData = [
   },
   {
     id: 'u5',
-    name: 'user5',
+    name: 'Priya Patel',
     phoneNo: '123454605',
     avatar: 'user-5.jpg',
     age: 24,
@@ -43,7 +43,7 @@ export const userData = [
   },
   {
     id: 'u6',
-    name: 'user6',
+    name: 'Arjun Singh',
     phoneNo: '123454606',
     avatar: 'user-6.jpg',
     age: 25,

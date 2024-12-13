@@ -1,9 +1,11 @@
-<div class="">
-    <form >
-    <label for="w3review">Remark: </label>
+
+<form (ngSubmit)="updateRemark()">
+    <label for="Remark">Remark: </label>
     <input type="text" [(ngModel)]="addedRemark" name="Remark">
-<button  (click)="updateRemark()">Submit</button>
+    <p class="actions">
+        <button type="button" (click)="cancelRemark()">Cancel</button>
+        <button type="submit">Create</button>
+      </p>
 </form>
     
-<button (click)="cancelRemark()">Cencel</button>
-</div>
+
