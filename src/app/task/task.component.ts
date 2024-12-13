@@ -2,7 +2,7 @@ import { Component, output,input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import {Task} from './task.model';
 import { AddremarkComponent } from './addremark/addremark.component';
-import { taskData } from '../data/TaskData';
+import { TasksService } from '../service/Task.service';
 @Component({
   selector: 'app-task',
   standalone:true,
@@ -17,6 +17,9 @@ export class TaskComponent {
   addremark = false;
   toUpdateTask = 0;
 
+  
+  constructor(private tasksService: TasksService) {}
+
 completed(){
   this.complet.emit(this.task());
 }
@@ -28,8 +31,7 @@ this.addremark =false
 }
 
 onUpdateRemark(selectedTask:Task){
-this.toUpdateTask = taskData.findIndex((task)=>task.id===selectedTask.id) 
-taskData[this.toUpdateTask].remark = selectedTask.remark
+this.tasksService.updateRemark(selectedTask.remark,selectedTask.id)
 this.addremark =false
 }
 }

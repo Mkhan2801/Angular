@@ -1,7 +1,7 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Task } from '../task.model';
 import { FormsModule } from '@angular/forms';
-import { taskData } from '../../data/TaskData';
+import { TasksService } from '../../service/Task.service';
 
 @Component({
   selector: 'app-addtask',
@@ -10,6 +10,9 @@ import { taskData } from '../../data/TaskData';
   styleUrl: './addtask.component.css'
 })
 export class AddtaskComponent {
+  
+  constructor(private tasksService: TasksService) {}
+
   userId = input.required<string>();
   removeTaskDiv = output<void>();
 
@@ -29,8 +32,10 @@ this.newTask = {
   date:new Date().toString(),
   complite :false
 }
-taskData.unshift(this.newTask)
+
+this.tasksService.addTask(this.newTask);
 this.calcelNewTask()
+
 }
 
 calcelNewTask(){

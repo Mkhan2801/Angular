@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
-import {userData} from './data/userData';
+import {userData} from './service/userData';
 import { TaskComponent } from "./task/task.component";
-import {taskData} from "./data/TaskData";
+import { TasksService } from '../app/service/Task.service';
 import { Task } from './task/task.model';
 import {DetailsComponent} from "./details/details.component"
+import { User } from './user/user.model';
 
 // import { NgFor,NgIf } from '@angular/common';
 
@@ -14,19 +15,19 @@ import {DetailsComponent} from "./details/details.component"
   selector: 'app-root',
   standalone:true,
   // imports : [NgFor,NgIf],
-  imports: [RouterOutlet, HeaderComponent, UserComponent, TaskComponent,DetailsComponent],
+  imports: [RouterOutlet, HeaderComponent, UserComponent,DetailsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
+  constructor(private tasksService: TasksService) {}
+
+
   title = 'test-app';
-  tasks = taskData;
   users = userData;
   
-  selectUser =this.users[0];
-  newRemark ='';
-  taskId :number = 0
-  userTaskId = false;
+  selectUser! : User;
   paindingTasks = true;
 
   
@@ -34,22 +35,14 @@ export class AppComponent {
     this.selectUser = this.users.find((user)=>user.id===id)!;
   }
 
-  onTaskComplet(task:Task){
-    
-    this.taskId = this.tasks.findIndex((selectedtask)=>selectedtask ===task)!;
-    this.tasks[this.taskId].complite = true;
-  }
-  remarkAdded(id:string){
-    
-    this.taskId = this.tasks.findIndex((task)=>task.id===id)!;
-    this.tasks[this.taskId].remark = this.newRemark;
+ 
 
-  }
   onShowAllTasks(show:boolean){
     this.paindingTasks = show;
   }
 
-  updateRemark(id:string){
-    console.log(id)
+  onNewTask(task:Task){
+    this.tasksService.addTask(task);
   }
+  
 }

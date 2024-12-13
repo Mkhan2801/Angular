@@ -1,5 +1,11 @@
+import { Injectable } from '@angular/core';
 
-export const taskData = [
+import {type Task } from '../task/task.model';
+
+@Injectable({ providedIn: 'root' })
+
+export class TasksService {
+  private taskData = [
     {
         id: '1',
         uid:'u1',
@@ -121,4 +127,43 @@ export const taskData = [
         complite: false,
         remark: 'update8'
       },
-  ]   
+  ] 
+  
+  
+  // constructor() {
+  //   const tasks = localStorage.getItem('tasks');
+
+  //   if (tasks) {
+  //     this.taskData = JSON.parse(tasks);
+  //   }
+  // }
+
+
+  // private saveTasks() {
+  //   localStorage.setItem('tasks', JSON.stringify(this.taskData));
+  // }
+
+
+  getUserTasks(userId: string) {
+    return this.taskData.filter((task) => task.uid === userId);
+  }
+
+  addTask(task: Task) {
+    this.taskData.unshift(task);
+    // this.saveTasks()
+  }
+
+
+  updateRemark(remark:string, id :string){
+    this.taskData.find((task)=> task.id == id)!.remark = remark  
+    // this.saveTasks()
+  }
+
+  complet(taskId:string){
+    this.taskData.find((task)=>task.id==taskId)!.complite=true
+    // this.saveTasks()
+  }
+ 
+
+
+}  

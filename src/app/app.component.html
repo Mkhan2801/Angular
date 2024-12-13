@@ -15,20 +15,9 @@
   <app-details [user]="selectUser" (showAllTasks)="onShowAllTasks($event)" />
   <!-- <ng-teplate #fallback><p id="fallback">No Data</p></ng-teplate> -->
   } @else {
-    <p id="fallback">No Data</p>
+    <p id="fallback">Select a User</p>
   }
 
 </main>
-@for (task of tasks; track task.id) {
-  @if (task.uid==selectUser.id ) {
-    @if(paindingTasks){
-      <app-task [task]="task" (complet)="onTaskComplet($event)"/>
-    } @else if(!task.complite) {
-    
-        <app-task [task]="task" (complet)="onTaskComplet($event)"/>
-      
-    }
 
-  }
-}
 <router-outlet />

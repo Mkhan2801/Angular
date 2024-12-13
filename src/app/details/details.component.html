@@ -24,6 +24,19 @@
     @if(newTaskAdd){
         <app-addtask [userId]="user().id" (removeTaskDiv)="onRemoveTask()"/>
       }
+<hr>
+<ul>
+      @for (task of tasks(user().id); track task.id) {
+  <li>
+        @if(allTasks){
+          <app-task [task]="task" (complet)="onTaskComplet($event)" />
+        } @else if(!task.complite) {
+            <app-task [task]="task" (complet)="onTaskComplet($event)"/>
+    
+      }
+    </li>
+    }
+</ul>
       </section>
   
   
