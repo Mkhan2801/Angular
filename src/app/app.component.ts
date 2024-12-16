@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import {userData} from './service/userData';
-import { TaskComponent } from "./task/task.component";
 import { TasksService } from '../app/service/Task.service';
 import { Task } from './task/task.model';
 import {DetailsComponent} from "./details/details.component"
@@ -13,9 +12,8 @@ import { User } from './user/user.model';
 
 @Component({
   selector: 'app-root',
-  standalone:true,
   // imports : [NgFor,NgIf],
-  imports: [RouterOutlet, HeaderComponent, UserComponent,DetailsComponent],
+  standalone:false,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

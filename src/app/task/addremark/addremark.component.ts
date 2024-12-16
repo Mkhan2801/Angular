@@ -1,10 +1,9 @@
 import { Component,input, output } from '@angular/core';
 import { Task } from '../task.model';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-addremark',
-  imports: [FormsModule],
+  standalone:false,
   templateUrl: './addremark.component.html',
   styleUrl: './addremark.component.css'
 })

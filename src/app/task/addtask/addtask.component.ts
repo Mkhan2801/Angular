@@ -1,11 +1,10 @@
 import { Component, inject, input, output } from '@angular/core';
 import { Task } from '../task.model';
-import { FormsModule } from '@angular/forms';
 import { TasksService } from '../../service/Task.service';
 
 @Component({
   selector: 'app-addtask',
-  imports: [FormsModule],
+  standalone:false,
   templateUrl: './addtask.component.html',
   styleUrl: './addtask.component.css'
 })

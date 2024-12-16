@@ -8,7 +8,8 @@ import { TasksService } from '../service/Task.service';
 
 @Component({
   selector: 'app-details',
-  imports: [AddtaskComponent,DatePipe,TaskComponent],
+  standalone:false,
+  // imports: [AddtaskComponent,DatePipe,TaskComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })

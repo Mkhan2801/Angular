@@ -1,12 +1,9 @@
 import { Component, output,input } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import {Task} from './task.model';
-import { AddremarkComponent } from './addremark/addremark.component';
 import { TasksService } from '../service/Task.service';
 @Component({
   selector: 'app-task',
-  standalone:true,
-  imports: [AddremarkComponent,DatePipe],
+  standalone:false,
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
